@@ -206,32 +206,55 @@
 											<div class="space-6"></div>
 											<p> Ingresa tus datos </p>
 
-											<form>
+                    						<form method="POST" action="{{ route('register') }}">
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="email" class="form-control" placeholder="Email" />
-															<i class="ace-icon fa fa-envelope"></i>
-														</span>
-													</label>
-
-													<label class="block clearfix">
-														<span class="block input-icon input-icon-right">
-															<input type="text" class="form-control" placeholder="Usuario" />
+															<input type="text" nane="nombre" id="nombre" class="form-control" placeholder="Nombre" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Password" />
-															<i class="ace-icon fa fa-lock"></i>
+															<input type="text" name="apellidos" id="apellidos" class="form-control" placeholder="Apellidos" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono" />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+													
+														<span class="block input-icon input-icon-right">
+															<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" />
+															<i class="ace-icon fa fa-envelope"></i>
+															@error('email')
+																<span class="invalid-feedback" role="alert">
+																	<strong>{{ $message }}</strong>
+																</span>
+															@enderror
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="password" class="form-control" placeholder="Confirmar password" />
+															<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Password" />
+															<i class="ace-icon fa fa-lock"></i>
+															@error('password')
+																<span class="invalid-feedback" role="alert">
+																	<strong>{{ $message }}</strong>
+																</span>
+															@enderror
+														</span>
+													</label>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"  placeholder="Confirmar password" />
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
@@ -252,8 +275,8 @@
 															<span class="bigger-110">Limpiar</span>
 														</button>
 
-														<button type="button" class="width-65 pull-right btn btn-sm btn-success">
-															<span class="bigger-110">Registrar</span>
+														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110" >Registrar</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
 														</button>

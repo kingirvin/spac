@@ -9,8 +9,9 @@ use App\Persona;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
-class RegisterController extends Controller
+class RegisterUserController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -48,9 +49,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+  protected function validator(Request $request)
     {
-        return Validator::make($data, [
+        return Validator::make($request, [
             'nombre' => ['required', 'string', 'max:255'],
             'telefono' => ['required', 'string', 'max:255'],
             'apellidos' => ['required', 'string', 'max:255'],
@@ -65,20 +66,19 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        return "hola";
         $persona=Persona::create([
-            'nombre' => $data['nombre'],
-            'apellidos' => $data['apellidos'],
-            'telefono' => $data['telfono'],
-            'correo' => $data['email'],
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'telefono' => $request->telefono,
+            'correo' => $request->email,
         ]);
-        return User::create([
-            'name' => $data['email'],
-            'email' => $data['email'],
+        User::create([
+            'name' => $request->nombre,
+            'email' =>$request->email,
             'personas_id' => $persona->id,
-            'password' => Hash::make($data['password']),
+            'password' => Hash::make($request->password),
         ]);
     }
 }
