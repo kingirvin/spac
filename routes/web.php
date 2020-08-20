@@ -19,6 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/miPerfil', 'HomeController@index')->name('miPerfil');
 Route::post('/registrar','Auth\RegisterUserController@create')->name('registrar');
+Route::post('/registrarUsuario','HomeController@registroUsuario')->name('registrarUsuario');
+Route::get('/listarUsuario', 'HomeController@listarUsuario')->name('listarUsuario');
+Route::get('/nuevoUsuario', 'HomeController@nuevoUsuario')->name('nuevoUsuario');
+Route::post('listarUsuario', 'HomeController@activarPlan')->name('listarUsuario');
+
 

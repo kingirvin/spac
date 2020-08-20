@@ -200,17 +200,18 @@
 										<div class="widget-main">
 											<h4 class="header green lighter bigger">
 												<i class="ace-icon fa fa-users blue"></i>
-												Nuevo Registro
+												Nuevo Registro 
 											</h4>
 
 											<div class="space-6"></div>
 											<p> Ingresa tus datos </p>
 
-                    						<form method="POST" action="{{ route('register') }}">
+                    						<form method="POST" action="{{ route('registrar') }}">
+											 @csrf
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" nane="nombre" id="nombre" class="form-control" placeholder="Nombre" />
+															<input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -277,7 +278,6 @@
 
 														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
 															<span class="bigger-110" >Registrar</span>
-
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
 														</button>
 													</div>

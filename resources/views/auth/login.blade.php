@@ -211,7 +211,7 @@
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" nane="nombre" id="nombre" class="form-control" placeholder="Nombre" />
+															<input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre" />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
@@ -225,7 +225,7 @@
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
 															<input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono" />
-															<i class="ace-icon fa fa-user"></i>
+															<i class="ace-icon fa fa-phone"></i>
 														</span>
 													</label>
 													<label class="block clearfix">
@@ -259,6 +259,27 @@
 															<i class="ace-icon fa fa-retweet"></i>
 														</span>
 													</label>
+													
+
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<select name="plan" id="plan" class="form-control" id="form-field-select-1">
+																<option value="Planes"></option>
+																<option value="4">Prueba</option>
+																<option value="1">Mensual</option>
+																<option value="2">Trimestral</option>
+																<option value="3">Anual</option>
+															</select>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" value ="555555"name="comprobante" id="comprobante" class="form-control" placeholder="Nro de comprobante" />
+															<i class="ace-icon fa fa-text"></i>
+														</span>
+													</label>
+
 
 													<label class="block">
 														<input type="checkbox" class="ace" />

@@ -9,7 +9,7 @@ use App\Persona;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Auth;
 class RegisterController extends Controller
 {
     /*
@@ -67,7 +67,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return "hola";
         $persona=Persona::create([
             'nombre' => $data['nombre'],
             'apellidos' => $data['apellidos'],
