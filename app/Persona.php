@@ -27,8 +27,8 @@ class Persona extends Model
            $persona->plan="---";
            $persona->estado="pendiente de pago";            
            $resul = DB::table('pagos')         
-            ->select('pagos.monto','pagos.fecha','pagos.id as pago','pagos.nrobaucher','planClientes.estado','planClientes.inicio','planClientes.fin','planClientes.id as idPlanCliente','plans.nombre as plan')
-            ->join('planClientes','planClientes.pagos_id','pagos.id')
+            ->select('pagos.monto','pagos.fecha','pagos.id as pago','pagos.nrobaucher','planclientes.estado','planclientes.inicio','planclientes.fin','planclientes.id as idPlanCliente','plans.nombre as plan')
+            ->join('planclientes','planclientes.pagos_id','pagos.id')
             ->join('plans','plans.id','pagos.plans_id')
             ->where('pagos.personas_id',$persona->id)
            ->get();
@@ -37,7 +37,7 @@ class Persona extends Model
                 $persona->idPlanCliente=$resul[0]->pago;
                 $persona->monto=$resul[0]->monto;
                 $persona->inicio=$resul[0]->inicio;
-                $persona->fin=$resul[0]->fin;
+                $persona->fin=$resul[0]->fin; 
                 $persona->plan=$resul[0]->plan;
                 $persona->fecha=$resul[0]->fecha;
                 $persona->estado=$resul[0]->estado;

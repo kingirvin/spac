@@ -95,6 +95,13 @@
 														<span>{{$persona->telefono}}</span>
 													</div>
 												</div>
+												<div class="profile-info-row">
+													<div class="profile-info-name"> Nombre I.E. </div>
+
+													<div class="profile-info-value">
+														<span>{{$persona->nombre_ie}}</span>
+													</div>
+												</div>
 											</div>
 
 											<div class="hr hr-8 dotted"></div>

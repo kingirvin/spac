@@ -1,0 +1,9 @@
+.listaDesempeno{
+    padding-bottom: 6px;
+}
+.separador{
+    height: 30px;
+}
+.bordes{    
+    border-color: #ddd; border-width: 1px;  border-style: solid;
+}

@@ -87,7 +87,7 @@ class RegisterUserController extends Controller
         Users_modulo::create([
             'id' => $user->id,
             'users_personas_id' =>$persona->id,
-            'modulos_id' =>'2',
+            'modulos_id' =>'1',
         ]);
         if($request->comprobante!=""|| $request->comprobante!=null){
             //definimos el area geografica del cual deseamos la fecha
