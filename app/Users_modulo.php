@@ -11,8 +11,16 @@ class Users_modulo extends Model
 {
     //
     protected $fillable = [
-        'id','users_personas_id','modulos_id',
+        'users_personas_id','modulos_id',
     ];
+    public function personas()
+    {
+        return $this->belongsTo('App\Persona', 'users_personas_id');
+    }
+    public function modulos()
+    {
+        return $this->belongsTo('App\Models\Modulo', 'modulos_id');
+    }
 
    public  static function listarModulos($vars){
         $user = Auth::user();
@@ -27,7 +35,7 @@ class Users_modulo extends Model
             $modulo->estado="0";
             $resuls = DB::table('submodulos')         
             ->select('submodulos.id','submodulos.nombre','submodulos.link')
-            ->where('submodulos.modulos_id',$modulo->id)
+            ->where('submodulos.users_personas_id',$modulo->id)
            ->get();
            foreach($resuls as $resul){
                $resul->estado="0";
@@ -40,4 +48,5 @@ class Users_modulo extends Model
         }
         return $modulos;
    }
+
 }

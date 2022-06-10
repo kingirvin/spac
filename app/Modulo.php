@@ -10,5 +10,8 @@ class Modulo extends Model
     protected $fillable = [
         'nombre','descripcion','link',
     ];
-
+    public function submodulo()
+    {
+        return $this->hasMany('App\Submodulo', 'modulos_id');
+    } 
 }

@@ -18,6 +18,76 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+//PORTAL WEB
+Route::prefix('administracion')->group(function () {
+    Route::get('/', [App\Http\Controllers\AdministracionController::class, 'index']);
+    Route::get('/usuario', [App\Http\Controllers\AdministracionController::class, 'usuario']);
+    Route::get('/competencias', [App\Http\Controllers\AdministracionController::class, 'competencias']);
+    Route::get('{id}/capacidades', [App\Http\Controllers\AdministracionController::class, 'capacidades']);
+    Route::get('{id}/desempenos', [App\Http\Controllers\AdministracionController::class, 'desempenos']);
+    Route::get('/enfoques', [App\Http\Controllers\AdministracionController::class, 'enfoques']);
+    Route::get('{id}/actitudes', [App\Http\Controllers\AdministracionController::class, 'actitudes']);
+    Route::get('/momentos', [App\Http\Controllers\AdministracionController::class, 'momentos']);
+    
+});
+
+//PORTAL WEB
+Route::prefix('docente')->group(function () {
+    Route::get('/', [App\Http\Controllers\DocenteController::class, 'index']);
+    Route::get('/programacion_anual', [App\Http\Controllers\DocenteController::class, 'programacion_anual']);
+    Route::get('/programacion_anual/nuevo', [App\Http\Controllers\DocenteController::class, 'nuevo_programacion_anual']);
+});
+
+Route::prefix('json/administracion')->group(function () {
+    Route::post('/usuario/listar', [App\Http\Controllers\Api\UserController::class, 'listar']);
+    Route::post('/usuario/reestablecer', [App\Http\Controllers\Api\UserController::class, 'reestablecer']);
+    Route::post('/usuario/buscar', [App\Http\Controllers\Api\UserController::class, 'buscar']);
+    Route::post('/usuario/rol', 'Api\Users_moduloController@rol');
+    Route::post('/usuario/actualizar', 'Api\Users_moduloController@actualizar');
+    Route::post('/usuario/actualizar', [App\Http\Controllers\Api\UserController::class, 'actualizar']);
+    Route::post('/usuario/nuevo', [App\Http\Controllers\Api\UserController::class, 'nuevo']);
+
+    Route::post('/competencia/listar', [App\Http\Controllers\Api\CompetenciaController::class, 'listar']);
+    Route::post('/competencia/nuevo', [App\Http\Controllers\Api\CompetenciaController::class, 'nuevo']);
+    Route::post('/competencia/buscar', [App\Http\Controllers\Api\CompetenciaController::class, 'buscar']);
+
+    Route::post('/desempenos/listar', [App\Http\Controllers\Api\DesempenoController::class, 'listar']);
+    Route::post('/desempenos/buscar', [App\Http\Controllers\Api\DesempenoController::class, 'buscar']);
+    Route::post('/desempenos/nuevo', [App\Http\Controllers\Api\DesempenoController::class, 'nuevo']);
+
+    Route::post('/Competencias_area/competencia_areas', [App\Http\Controllers\Api\Competencias_areasController::class, 'competencia_areas']);
+
+    Route::post('/capacidades/listar', [App\Http\Controllers\Api\CapacidadesController::class, 'listar']);
+    Route::post('/capacidades/nuevo', [App\Http\Controllers\Api\CapacidadesController::class, 'nuevo']);
+    Route::post('/capacidades/buscar', [App\Http\Controllers\Api\CapacidadesController::class, 'buscar']);
+
+    Route::post('/enfoques/listar', [App\Http\Controllers\Api\EnfoqueController::class, 'listar']);
+    Route::post('/enfoques/nuevo', [App\Http\Controllers\Api\EnfoqueController::class, 'nuevo']);
+    Route::post('/enfoques/buscar', [App\Http\Controllers\Api\EnfoqueController::class, 'buscar']);
+    
+    Route::post('/actitudes/listar', [App\Http\Controllers\Api\ActitudesController::class, 'listar']);    
+    Route::post('/actitudes/nuevo', [App\Http\Controllers\Api\ActitudesController::class, 'nuevo']);
+    Route::post('/actitudes/buscar', [App\Http\Controllers\Api\ActitudesController::class, 'buscar']);
+    Route::post('/actitudes/eliminar', [App\Http\Controllers\Api\ActitudesController::class, 'eliminar']);
+    
+
+    Route::post('/momentos/listar', [App\Http\Controllers\Api\MomentosController::class, 'listar']);    
+    Route::post('/momentos/nuevo', [App\Http\Controllers\Api\MomentosController::class, 'nuevo']);
+    Route::post('/momentos/buscar', [App\Http\Controllers\Api\MomentosController::class, 'buscar']);
+    Route::post('/momentos/eliminar', [App\Http\Controllers\Api\MomentosController::class, 'eliminar']);
+    //Route::get('/usuarios', [App\Http\Controllers\administracionController::class, 'usuario']);
+});
+Route::prefix('json/docente')->group(function () {
+    Route::post('/programacion_anual/nuevo', [App\Http\Controllers\Api\ProgramacionAnualController::class, 'nuevo']);
+    Route::post('/programacion_anual/listar', [App\Http\Controllers\Api\ProgramacionAnualController::class, 'listar']);
+    Route::post('/programacion_anual/buscar', [App\Http\Controllers\Api\ProgramacionAnualController::class, 'buscar']);
+    Route::post('/programacion_anual/eliminar', [App\Http\Controllers\Api\ProgramacionAnualController::class, 'eliminar']);
+    //Route::post('/programacion_anual/listar', [App\Http\Controllers\Api\ProgramacionAnualController::class, 'listar']);
+
+});
+
+
+
 
 Route::get('/miPerfil', 'HomeController@index')->name('miPerfil');
 Route::post('/registrar','Auth\RegisterUserController@create')->name('registrar');
@@ -28,7 +98,7 @@ Route::post('/registrarUsuario','HomeController@registroUsuario')->name('registr
 Route::get('/editarPerfil','HomeController@editarPerfil');
 Route::post('/editarPerfil','HomeController@guardarPerfil')->name('editarPerfil');
 Route::get('/programacionAnual','HomeController@planAnual');
-//Route::post('/programacionAnual','HomeController@planAnual')->name('datosPlanAnual');
+Route::post('/programacionAnual','HomeController@planAnual')->name('datosPlanAnual');
 Route::get('/listarUsuario', 'HomeController@listarUsuario')->name('listarUsuario');
 Route::post('listarUsuario', 'HomeController@activarPlan')->name('listarUsuario');
 
